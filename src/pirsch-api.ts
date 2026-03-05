@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import fetch from 'node-fetch';
 import type { PirschTokenResponse, Domain, FilterInput } from './types.js';
 import { buildFilterParams } from './filters.js';
 
