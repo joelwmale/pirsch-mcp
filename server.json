@@ -1,16 +1,16 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
-  "name": "io.github.verygoodplugins/mcp-pirsch",
+  "name": "io.github.joelwmale/mcp-pirsch",
   "description": "MCP server for Pirsch Analytics. Natural language queries, period comparisons, and trend analysis for website traffic.",
   "version": "0.1.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/verygoodplugins/mcp-pirsch"
+    "url": "https://github.com/joelwmale/mcp-pirsch"
   },
   "packages": [
     {
       "registry_type": "npm",
-      "identifier": "@verygoodplugins/mcp-pirsch",
+      "identifier": "@joelwmale/mcp-pirsch",
       "version": "0.1.0"
     }
   ],
@@ -37,7 +37,7 @@
     }
   ],
   "author": {
-    "name": "Very Good Plugins",
-    "url": "https://verygoodplugins.com/?utm_source=mcp-registry"
+    "name": "Joel Male",
+    "url": "https://github.com/joelwmale"
   }
 }

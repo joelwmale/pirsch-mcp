@@ -1,7 +1,7 @@
 # MCP Pirsch Server
 
-[![Version](https://img.shields.io/npm/v/@verygoodplugins/mcp-pirsch)](https://www.npmjs.com/package/@verygoodplugins/mcp-pirsch)
-[![License](https://img.shields.io/npm/l/@verygoodplugins/mcp-pirsch)](LICENSE)
+[![npm version](https://img.shields.io/npm/v/@joelwmale/mcp-pirsch)](https://www.npmjs.com/package/@joelwmale/mcp-pirsch)
+[![License](https://img.shields.io/npm/l/@joelwmale/mcp-pirsch)](LICENSE)
 
 A Model Context Protocol (MCP) server for Pirsch Analytics, enabling natural language analytics queries, period comparisons, and trend analysis for your website traffic.
 
@@ -25,10 +25,10 @@ The simplest way - no need to install anything globally:
 
 ```bash
 # For Claude Desktop
-npx @verygoodplugins/mcp-pirsch
+npx @joelwmale/mcp-pirsch
 
 # For Claude Code
-claude mcp add pirsch "npx @verygoodplugins/mcp-pirsch"
+claude mcp add pirsch "npx @joelwmale/mcp-pirsch"
 ```
 
 #### Option 2: Global Installation
@@ -37,7 +37,7 @@ Install once, use anywhere:
 
 ```bash
 # Install globally
-npm install -g @verygoodplugins/mcp-pirsch
+npm install -g @joelwmale/mcp-pirsch
 
 # For Claude Code
 claude mcp add pirsch "mcp-pirsch"
@@ -49,7 +49,7 @@ For contributing or customization:
 
 ```bash
 # Clone and install
-git clone https://github.com/verygoodplugins/mcp-pirsch.git
+git clone https://github.com/joelwmale/mcp-pirsch.git
 cd mcp-pirsch
 npm install
 npm run build
@@ -77,7 +77,7 @@ npm run build
   "mcpServers": {
     "pirsch": {
       "command": "npx",
-      "args": ["@verygoodplugins/mcp-pirsch"],
+      "args": ["@joelwmale/mcp-pirsch"],
       "env": {
         "PIRSCH_CLIENT_ID": "your_client_id",
         "PIRSCH_CLIENT_SECRET": "your_client_secret",
@@ -110,7 +110,7 @@ npm run build
 <summary><b>Claude Code Configuration</b></summary>
 
 ```bash
-claude mcp add pirsch "npx @verygoodplugins/mcp-pirsch" \
+claude mcp add pirsch "npx @joelwmale/mcp-pirsch" \
   --env PIRSCH_CLIENT_ID=your_client_id \
   --env PIRSCH_CLIENT_SECRET=your_client_secret \
   --env PIRSCH_DEFAULT_DOMAIN_ID=your_domain_id
@@ -128,7 +128,7 @@ Add to `.mcp.json` in your project:
   "mcpServers": {
     "pirsch": {
       "command": "node",
-      "args": ["./node_modules/@verygoodplugins/mcp-pirsch/dist/index.js"],
+      "args": ["./node_modules/@joelwmale/mcp-pirsch/dist/index.js"],
       "env": {
         "PIRSCH_CLIENT_ID": "your_client_id",
         "PIRSCH_CLIENT_SECRET": "your_client_secret"
@@ -431,13 +431,14 @@ MIT - See [LICENSE](LICENSE) file for details.
 
 ## Support
 
-- **Issues**: [GitHub Issues](https://github.com/verygoodplugins/mcp-pirsch/issues)
+- **Issues**: [GitHub Issues](https://github.com/joelwmale/mcp-pirsch/issues)
 - **Documentation**: [Pirsch API Docs](https://docs.pirsch.io/api-sdks/api)
 
 ## Credits
 
-Built by [Jack Arturo](https://x.com/verygoodplugins) 🧡
+Maintained by [Joel Male](https://github.com/joelwmale).
+
+Originally built by [Jack Arturo / Very Good Plugins](https://verygoodplugins.com) — full credit to the original author.
 
 - Powered by [Pirsch Analytics](https://pirsch.io)
 - Built with [Model Context Protocol SDK](https://github.com/anthropics/model-context-protocol)
-- Part of the [Very Good Plugins](https://verygoodplugins.com?utm_source=github) MCP ecosystem

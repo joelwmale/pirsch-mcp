@@ -1,10 +1,10 @@
 {
-  "name": "@verygoodplugins/mcp-pirsch",
+  "name": "@joelwmale/mcp-pirsch",
   "version": "0.1.0",
   "description": "MCP server for Pirsch Analytics: stats, comparisons, trends",
   "main": "dist/index.js",
   "type": "module",
-  "mcpName": "io.github.verygoodplugins/mcp-pirsch",
+  "mcpName": "io.github.joelwmale/mcp-pirsch",
   "engines": {
     "node": ">=18.0.0"
   },
@@ -27,16 +27,16 @@
     "analytics",
     "reporting"
   ],
-  "author": "Very Good Plugins",
+  "author": "Joel Male",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/verygoodplugins/mcp-pirsch.git"
+    "url": "git+https://github.com/joelwmale/mcp-pirsch.git"
   },
   "bugs": {
-    "url": "https://github.com/verygoodplugins/mcp-pirsch/issues"
+    "url": "https://github.com/joelwmale/mcp-pirsch/issues"
   },
-  "homepage": "https://github.com/verygoodplugins/mcp-pirsch#readme",
+  "homepage": "https://github.com/joelwmale/mcp-pirsch#readme",
   "publishConfig": {
     "access": "public"
   },
