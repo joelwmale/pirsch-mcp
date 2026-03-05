@@ -24,11 +24,10 @@ A Model Context Protocol (MCP) server for Pirsch Analytics, enabling natural lan
 The simplest way - no need to install anything globally:
 
 ```bash
-# For Claude Desktop
-npx @joelwmale/pirsch-mcp
-
-# For Claude Code
-claude mcp add pirsch "npx @joelwmale/pirsch-mcp"
+claude mcp add pirsch-mcp \
+  -e PIRSCH_CLIENT_ID=your_client_id \
+  -e PIRSCH_CLIENT_SECRET=your_client_secret \
+  -- npx -y @joelwmale/pirsch-mcp
 ```
 
 #### Option 2: Global Installation
@@ -40,7 +39,10 @@ Install once, use anywhere:
 npm install -g @joelwmale/pirsch-mcp
 
 # For Claude Code
-claude mcp add pirsch "pirsch-mcp"
+claude mcp add pirsch-mcp \
+  -e PIRSCH_CLIENT_ID=your_client_id \
+  -e PIRSCH_CLIENT_SECRET=your_client_secret \
+  -- pirsch-mcp
 ```
 
 #### Option 3: Local Development
@@ -75,9 +77,9 @@ npm run build
 ```json
 {
   "mcpServers": {
-    "pirsch": {
+    "pirsch-mcp": {
       "command": "npx",
-      "args": ["@joelwmale/pirsch-mcp"],
+      "args": ["-y", "@joelwmale/pirsch-mcp"],
       "env": {
         "PIRSCH_CLIENT_ID": "your_client_id",
         "PIRSCH_CLIENT_SECRET": "your_client_secret",
@@ -93,7 +95,7 @@ npm run build
 ```json
 {
   "mcpServers": {
-    "pirsch": {
+    "pirsch-mcp": {
       "command": "pirsch-mcp",
       "env": {
         "PIRSCH_CLIENT_ID": "your_client_id",
@@ -104,17 +106,22 @@ npm run build
 }
 ```
 
+> **Note for nvm users:** Claude Desktop may not inherit your shell's PATH. If `npx` or `pirsch-mcp` isn't found, use the full path: `"/Users/yourname/.nvm/versions/node/vX.X.X/bin/npx"` as the `command` value.
+
 </details>
 
 <details>
 <summary><b>Claude Code Configuration</b></summary>
 
 ```bash
-claude mcp add pirsch "npx @joelwmale/pirsch-mcp" \
-  --env PIRSCH_CLIENT_ID=your_client_id \
-  --env PIRSCH_CLIENT_SECRET=your_client_secret \
-  --env PIRSCH_DEFAULT_DOMAIN_ID=your_domain_id
+claude mcp add pirsch-mcp \
+  -e PIRSCH_CLIENT_ID=your_client_id \
+  -e PIRSCH_CLIENT_SECRET=your_client_secret \
+  -e PIRSCH_DEFAULT_DOMAIN_ID=your_domain_id \
+  -- npx -y @joelwmale/pirsch-mcp
 ```
+
+> **Note:** The `--` separator is required — it tells the CLI that everything after it is the command to run, not a flag.
 
 </details>
 
