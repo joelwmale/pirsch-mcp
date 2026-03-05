@@ -1,7 +1,7 @@
 # Release Please - Automated versioning and npm publishing
 #
 # How it works:
-# 1. Every push to main with conventional commits updates a "Release PR"
+# 1. Every push to master with conventional commits updates a "Release PR"
 # 2. When you merge the Release PR, it:
 #    - Updates version in package.json
 #    - Updates CHANGELOG.md
@@ -23,7 +23,7 @@ name: Release Please
 on:
   push:
     branches:
-      - main
+      - master
 
 permissions:
   contents: write
