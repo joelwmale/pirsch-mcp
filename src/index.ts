@@ -30,7 +30,7 @@ async function resolveDomainId(argId?: string): Promise<string> {
 }
 
 const server = new Server(
-  { name: 'mcp-pirsch', version: '0.1.0' },
+  { name: 'pirsch-mcp', version: '0.1.0' },
   { capabilities: { tools: {} } }
 );
 

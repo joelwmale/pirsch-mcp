@@ -1,7 +1,7 @@
 # MCP Pirsch Server
 
-[![npm version](https://img.shields.io/npm/v/@joelwmale/mcp-pirsch)](https://www.npmjs.com/package/@joelwmale/mcp-pirsch)
-[![License](https://img.shields.io/npm/l/@joelwmale/mcp-pirsch)](LICENSE)
+[![npm version](https://img.shields.io/npm/v/@joelwmale/pirsch-mcp)](https://www.npmjs.com/package/@joelwmale/pirsch-mcp)
+[![License](https://img.shields.io/npm/l/@joelwmale/pirsch-mcp)](LICENSE)
 
 A Model Context Protocol (MCP) server for Pirsch Analytics, enabling natural language analytics queries, period comparisons, and trend analysis for your website traffic.
 
@@ -25,10 +25,10 @@ The simplest way - no need to install anything globally:
 
 ```bash
 # For Claude Desktop
-npx @joelwmale/mcp-pirsch
+npx @joelwmale/pirsch-mcp
 
 # For Claude Code
-claude mcp add pirsch "npx @joelwmale/mcp-pirsch"
+claude mcp add pirsch "npx @joelwmale/pirsch-mcp"
 ```
 
 #### Option 2: Global Installation
@@ -37,10 +37,10 @@ Install once, use anywhere:
 
 ```bash
 # Install globally
-npm install -g @joelwmale/mcp-pirsch
+npm install -g @joelwmale/pirsch-mcp
 
 # For Claude Code
-claude mcp add pirsch "mcp-pirsch"
+claude mcp add pirsch "pirsch-mcp"
 ```
 
 #### Option 3: Local Development
@@ -49,8 +49,8 @@ For contributing or customization:
 
 ```bash
 # Clone and install
-git clone https://github.com/joelwmale/mcp-pirsch.git
-cd mcp-pirsch
+git clone https://github.com/joelwmale/pirsch-mcp.git
+cd pirsch-mcp
 npm install
 npm run build
 ```
@@ -77,7 +77,7 @@ npm run build
   "mcpServers": {
     "pirsch": {
       "command": "npx",
-      "args": ["@joelwmale/mcp-pirsch"],
+      "args": ["@joelwmale/pirsch-mcp"],
       "env": {
         "PIRSCH_CLIENT_ID": "your_client_id",
         "PIRSCH_CLIENT_SECRET": "your_client_secret",
@@ -94,7 +94,7 @@ npm run build
 {
   "mcpServers": {
     "pirsch": {
-      "command": "mcp-pirsch",
+      "command": "pirsch-mcp",
       "env": {
         "PIRSCH_CLIENT_ID": "your_client_id",
         "PIRSCH_CLIENT_SECRET": "your_client_secret"
@@ -110,7 +110,7 @@ npm run build
 <summary><b>Claude Code Configuration</b></summary>
 
 ```bash
-claude mcp add pirsch "npx @joelwmale/mcp-pirsch" \
+claude mcp add pirsch "npx @joelwmale/pirsch-mcp" \
   --env PIRSCH_CLIENT_ID=your_client_id \
   --env PIRSCH_CLIENT_SECRET=your_client_secret \
   --env PIRSCH_DEFAULT_DOMAIN_ID=your_domain_id
@@ -128,7 +128,7 @@ Add to `.mcp.json` in your project:
   "mcpServers": {
     "pirsch": {
       "command": "node",
-      "args": ["./node_modules/@joelwmale/mcp-pirsch/dist/index.js"],
+      "args": ["./node_modules/@joelwmale/pirsch-mcp/dist/index.js"],
       "env": {
         "PIRSCH_CLIENT_ID": "your_client_id",
         "PIRSCH_CLIENT_SECRET": "your_client_secret"
@@ -431,7 +431,7 @@ MIT - See [LICENSE](LICENSE) file for details.
 
 ## Support
 
-- **Issues**: [GitHub Issues](https://github.com/joelwmale/mcp-pirsch/issues)
+- **Issues**: [GitHub Issues](https://github.com/joelwmale/pirsch-mcp/issues)
 - **Documentation**: [Pirsch API Docs](https://docs.pirsch.io/api-sdks/api)
 
 ## Credits
