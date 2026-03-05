@@ -16,6 +16,7 @@
     "postbuild": "chmod +x dist/index.js",
     "dev": "tsx watch src/index.ts",
     "start": "node dist/index.js",
+    "lint": "tsc --noEmit",
     "test": "tsx src/index.ts --help || true",
     "prepublishOnly": "npm run build"
   },
