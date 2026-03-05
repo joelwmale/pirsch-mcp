@@ -15,8 +15,9 @@
 #   chore/docs: no version bump
 #
 # npm Publishing:
-#   Uses Trusted Publishing (OIDC) - no secrets needed!
-#   Configure at: https://www.npmjs.com/package/@joelwmale/pirsch-mcp/access
+#   Requires NPM_TOKEN secret in GitHub repo settings.
+#   Create a granular access token at npmjs.com with bypass-2FA enabled,
+#   then add it as NPM_TOKEN in Settings → Secrets → Actions.
 
 name: Release Please
 
@@ -47,7 +48,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      id-token: write
     steps:
       - uses: actions/checkout@v4
 
@@ -60,8 +60,9 @@ jobs:
       - run: npm run build
       - run: npm test
 
-      # Trusted Publishing: No NPM_TOKEN needed!
-      - run: npm publish --access public --provenance
+      - run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   announce:
     needs: [release-please, npm-publish]
