@@ -66,6 +66,9 @@ export function buildFilterParams(filter: FilterInput, domainId: string, default
   set('visitor_id', filter.visitor_id);
   set('session_id', filter.session_id);
 
+  // Funnel
+  set('funnel_id', filter.funnel_id);
+
   return params;
 }
 

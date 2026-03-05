@@ -55,6 +55,7 @@ export interface FilterInput {
   search?: string;
   visitor_id?: string;
   session_id?: string;
+  funnel_id?: string;
 }
 
 export interface VisitorsPoint {

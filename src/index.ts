@@ -151,6 +151,69 @@ const tools: Tool[] = [
     inputSchema: { type: 'object', properties: { domain_id: { type: 'string' }, start: { type: 'number' } } }
   },
   {
+    name: 'pirsch_events',
+    description: 'List all custom events tracked on a domain with visitor counts, conversion rates, and available metadata keys. Call this first to discover what event names exist before filtering by event.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        domain_id: { type: 'string' },
+        filter: { type: 'object', properties: filterSchemaProperties }
+      }
+    }
+  },
+  {
+    name: 'pirsch_goals',
+    description: 'Get conversion goal performance including visitor counts and conversion rates for all configured goals in a domain.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        domain_id: { type: 'string' },
+        filter: { type: 'object', properties: filterSchemaProperties }
+      }
+    }
+  },
+  {
+    name: 'pirsch_funnel',
+    description: 'Analyse a funnel\'s step-by-step drop-off. Returns visitors, drop rate, and relative visitors per step. Requires a funnel_id from the Pirsch dashboard.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        domain_id: { type: 'string' },
+        funnel_id: { type: 'string', description: 'Funnel ID from the Pirsch dashboard' },
+        filter: { type: 'object', properties: filterSchemaProperties }
+      },
+      required: ['funnel_id']
+    }
+  },
+  {
+    name: 'pirsch_sessions',
+    description: 'Get individual session records with full detail: entry/exit pages, duration, device info, location, and UTM data. Max 100 per request — use filter.offset to paginate.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        domain_id: { type: 'string' },
+        filter: { type: 'object', properties: filterSchemaProperties }
+      }
+    }
+  },
+  {
+    name: 'pirsch_filter_options',
+    description: 'Discover available values for a filter dimension within a date range (e.g. what countries, events, browsers, or UTM sources have data). Call this before filtering to know what values are valid.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        domain_id: { type: 'string' },
+        dimension: {
+          type: 'string',
+          enum: ['referrer/name', 'hostname', 'page', 'event', 'country', 'browser', 'utm/source', 'tag'],
+          description: 'The dimension to retrieve available values for'
+        },
+        filter: { type: 'object', properties: filterSchemaProperties }
+      },
+      required: ['dimension']
+    }
+  },
+  {
     name: 'pirsch_compare',
     description: 'Compare visitors time series between two periods and return deltas/growth',
     inputSchema: {
@@ -229,6 +292,38 @@ server.setRequestHandler(CallToolRequestSchema, async (req) => {
         const start = (args?.start as number) ?? 600;
         const data = await api.getActive(domainId, start);
         return { content: [{ type: 'text', text: JSON.stringify({ domain_id: domainId, start, active: data }, null, 2) }] };
+      }
+      case 'pirsch_events': {
+        const domainId = await resolveDomainId(args?.domain_id as string | undefined);
+        const filter = (args?.filter || {}) as FilterInput;
+        const data = await api.getStatistics('/statistics/events', domainId, filter);
+        return { content: [{ type: 'text', text: JSON.stringify({ domain_id: domainId, events: data }, null, 2) }] };
+      }
+      case 'pirsch_goals': {
+        const domainId = await resolveDomainId(args?.domain_id as string | undefined);
+        const filter = (args?.filter || {}) as FilterInput;
+        const data = await api.getStatistics('/statistics/goals', domainId, filter);
+        return { content: [{ type: 'text', text: JSON.stringify({ domain_id: domainId, goals: data }, null, 2) }] };
+      }
+      case 'pirsch_funnel': {
+        const domainId = await resolveDomainId(args?.domain_id as string | undefined);
+        const funnel_id = args?.funnel_id as string;
+        const filter = (args?.filter || {}) as FilterInput;
+        const data = await api.getStatistics('/statistics/funnel', domainId, { ...filter, funnel_id });
+        return { content: [{ type: 'text', text: JSON.stringify({ domain_id: domainId, funnel_id, funnel: data }, null, 2) }] };
+      }
+      case 'pirsch_sessions': {
+        const domainId = await resolveDomainId(args?.domain_id as string | undefined);
+        const filter = (args?.filter || {}) as FilterInput;
+        const data = await api.getStatistics('/statistics/session/list', domainId, filter);
+        return { content: [{ type: 'text', text: JSON.stringify({ domain_id: domainId, sessions: data }, null, 2) }] };
+      }
+      case 'pirsch_filter_options': {
+        const domainId = await resolveDomainId(args?.domain_id as string | undefined);
+        const dimension = args?.dimension as string;
+        const filter = (args?.filter || {}) as FilterInput;
+        const data = await api.getStatistics(`/statistics/options/${dimension}`, domainId, filter);
+        return { content: [{ type: 'text', text: JSON.stringify({ domain_id: domainId, dimension, options: data }, null, 2) }] };
       }
       case 'pirsch_compare': {
         const domainId = await resolveDomainId(args?.domain_id as string | undefined);
