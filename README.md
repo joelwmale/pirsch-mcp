@@ -261,6 +261,79 @@ Get currently active visitors and pages.
 Show me active visitors in the last 5 minutes
 ```
 
+### Events & Conversions
+
+#### `pirsch_events`
+List all custom events tracked on a domain with visitor counts, conversion rates, and available metadata keys.
+
+**Parameters:**
+- `domain_id` (optional): Target domain ID
+- `filter` (optional): Date range, path, country, etc.
+
+**Example:**
+```
+What events are being tracked on my site this month?
+```
+
+#### `pirsch_goals`
+Get conversion goal performance for all configured goals.
+
+**Parameters:**
+- `domain_id` (optional): Target domain ID
+- `filter` (optional): Date range and standard filters
+
+**Example:**
+```
+How are my conversion goals performing this week?
+```
+
+#### `pirsch_funnel`
+Analyse step-by-step drop-off through a funnel.
+
+**Parameters:**
+- `funnel_id` (required): Funnel ID from your Pirsch dashboard
+- `domain_id` (optional): Target domain ID
+- `filter` (optional): Date range and standard filters
+
+**Returns:** Per-step visitor counts, drop-off rates, and relative visitor percentages
+
+**Example:**
+```
+Show me drop-off through funnel abc123 this month
+```
+
+### Session Analysis
+
+#### `pirsch_sessions`
+Get individual session records with full detail.
+
+**Parameters:**
+- `domain_id` (optional): Target domain ID
+- `filter` (optional): Including `offset`/`limit` for pagination (max 100 per request), plus any standard filters
+
+**Returns:** Entry/exit pages, duration, device info, location, UTM data per session
+
+**Example:**
+```
+Show me recent sessions from mobile users in Australia
+```
+
+### Discovery
+
+#### `pirsch_filter_options`
+Discover available values for a filter dimension within a date range. Useful before filtering to know what values exist.
+
+**Parameters:**
+- `dimension` (required): `referrer/name` | `hostname` | `page` | `event` | `country` | `browser` | `utm/source` | `tag`
+- `domain_id` (optional): Target domain ID
+- `filter` (optional): Date range to scope the options
+
+**Example:**
+```
+What countries have visitor data this month?
+What events are available to filter by?
+```
+
 ### Comparative Analytics
 
 #### `pirsch_compare`
